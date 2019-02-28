@@ -1,16 +1,28 @@
 <template>
-  <v-layout class="pa-3" column justify-center>
-    <h1 class="heading-1">
+  <v-layout column>
+    <h1 class="heading-1 mb-3">
       <span class="corn">App-a</span> megmondja
     </h1>
-    <h2 class="mt-5 heading-2">1. Dolgozat típusa / nehézsége</h2>
-    <h3 class="my-4 heading-3">1 = Röpdolgozat
-      <br>2 = Bejelentett általános dolgozat
-      <br>3 = Témazáró-szerű
-      <br>4 = Konkrétan témazáró
-      <br>5 = [valami nehéz téma kell ide]
-    </h3>
-    <v-slider color="primary" always-dirty max="5" min="1" thumb-label ticks value="hardness"></v-slider>
+    <v-card class="pa-3">
+      <h2 class="heading-2">1. Dolgozat típusa / nehézsége</h2>
+      <h3 class="my-4 heading-3">1 = Nem mondtak semmit, csak úgy tanuljak órára
+        <br>2 = A tanár azt mondta lehet hogy írunk
+        <br>3 = A tanár azt mondta, hogy biztos pár ember dogát fog írni/felel
+        <br>4 = Azt mondta a tanár, mindenki írni fog dolgozatott
+        <br>5 = Témazáró lesz
+      </h3>
+      <v-slider
+        class="mb-3 px-4"
+        color="accent"
+        always-dirty
+        max="5"
+        min="1"
+        thumb-label
+        ticks
+        :value="hardness"
+      ></v-slider>
+    </v-card>
+    <v-checkbox label="label" v-model="value" value="value"></v-checkbox>
   </v-layout>
 </template>
 
@@ -18,7 +30,7 @@
 export default {
   data() {
     return {
-      hardness: null,
+      hardness: 1,
       active: "Start",
       tabs: [
         {

@@ -10,7 +10,7 @@ Vue.use(Vuetify, {
     current: 'hu',
   },
   theme: {
-    primary: '#673ab7',
-    accent: '#00e5ff',
+    primary: '#6500A0',
+    accent: '#b700b7',
   },
 });
