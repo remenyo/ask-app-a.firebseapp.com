@@ -1,4 +1,4 @@
-# app-a!
+# App-a!
 
 ## Project setup
 ```

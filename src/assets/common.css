@@ -1,0 +1,31 @@
+html {
+  height: 100vh;
+  overflow: auto;
+}
+
+@font-face {
+  font-family: Cornerstone;
+  src: url(./Cornerstone.woff2);
+}
+
+.corn {
+  font-family: Cornerstone, cursive;
+}
+
+.center {
+  text-align: center;
+  justify-content: center;
+}
+
+.select_all {
+  user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: element;
+}
+
+.select_none {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
