@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    user: null,
     res: null,
     chance: 3,
     chances: [10, 25, 40, 60, 80, 50],
@@ -13,7 +14,7 @@ export default new Vuex.Store({
       {
         q: 'Mi a tanár neme?',
         a: ['férfi', 'nő'],
-        w: [0, 0],
+        w: 0,
       },
       {
         q: 'Hanyadik órában írnátok?',
@@ -66,6 +67,7 @@ export default new Vuex.Store({
     UPDATE_RES(state, res) {
       state.res = res;
     },
+    USER_ALTER(state, usr) { state.user = usr; },
   },
   actions: {
 

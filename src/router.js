@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Start from './views/Start.vue';
 import Doga from './views/Doga.vue';
 import About from './views/About.vue';
+import AuthSuccess from './components/AuthSuccess.vue';
 
 Vue.use(Router);
 
@@ -25,6 +26,7 @@ export default new Router({
       name: 'about',
       component: About,
     },
+    { path: '/success', component: AuthSuccess },
     { path: '*', redirect: '/' },
   ],
 });
