@@ -11,6 +11,6 @@ Vue.use(Vuetify, {
   },
   theme: {
     primary: '#6500A0',
-    accent: '#00b0ff',
+    accent: '#1976d2',
   },
 });

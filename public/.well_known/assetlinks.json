@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.remenyo.appa",
+            "sha256_cert_fingerprints": [
+                "EA:9F:AB:89:08:5D:40:92:C0:FF:8E:E8:D1:18:B7:7E:16:D9:4C:EB:29:C7:DB:AA:72:FF:1E:AA:72:80:8A:6A"
+            ]
+        }
+    }
+]
