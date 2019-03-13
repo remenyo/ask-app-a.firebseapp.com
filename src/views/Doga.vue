@@ -4,7 +4,7 @@
     align-center
   >
     <h1 class="heading-1 mb-3">
-      <span class="corn">App-a</span> megmondja
+      <span class="corn">App-a</span> megmondja hogy lesz-e dolgozat, vagy hogy kell-e tanulni.
     </h1>
     <v-btn
       class="mb-5"
@@ -318,7 +318,7 @@ export default {
         osztando = chance;
       } else osztando = 100 - chance;
       chance += mod.reduce((acc, curr) => acc + (osztando / oszto) * curr, 0);
-      const val = Math.round(chance); // only because lazyness can pull 0-19 to negative int...
+      const val = Math.round(chance);
       return val;
     },
     learnOrWhat() {
@@ -343,6 +343,7 @@ export default {
   created() {
     this.weights = this.$store.state.weights;
     this.res = Array(this.qList.length).fill(null);
+    this.$store.dispatch('firebaseUpdateContent');
     console.log(this.weights);
   },
   methods: {

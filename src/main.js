@@ -12,6 +12,7 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 // Vue.use(VS2);
 // Vue.use(Adsense);
+
 Vue.use(VueAnalytics, {
   id: 'UA-135463315-2',
   debug: {

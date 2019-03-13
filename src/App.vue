@@ -200,12 +200,6 @@ export default {
       return this.$store.state.savedRes;
     },
   },
-  mounted() {
-    this.$store.dispatch('firebaseUpdateContent');
-  },
-  methods: {
-    ...mapMutations(['UPDATE_QLIST']),
-  },
 };
 </script>
 <style>

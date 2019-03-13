@@ -5,21 +5,34 @@ const cors = require('cors');
 
 admin.initializeApp(functions.config().firebase);
 const app = express();
+app.use(cors({
+  origin: true
+}))
 
 // Automatically allow cross-origin requests
-app.use(cors({ origin: true }));
+app.options('*', cors())
 
-app.post = (req, res) => {
-  admin.database().ref().once('value', (snapshot) => {
-    const qList = snapshot.val().qList
-    const model = req.body.payload.res
-    for (const [index, val] of model.res.entries()) {
-      qList[index].w = val.map((num, idx) => { return num + qList[index].w[idx] })
+app.post('/', (req, res) => {
+  admin.database().ref('weights').once('value', (snapshot) => {
+    let weights = snapshot.val()
+    let model = req.body.payload.res
+    for (let row = 0; row < weights.length; row++) {
+      for (let [index, v] of model[row].entries()) {
+        weights[row][index] += v
+      }
     }
-    res.status(200).send(qList)
-    // admin.database().ref('qlist').set(qList).then(res.status(200).json(qList)).catch(err => res.status(500).send(err));
+    admin.database().ref('weights').update(weights)
+    admin.database().ref('updates').push({
+      date: req.body.payload.date,
+      chanceIndex: req.body.payload.chanceIndex,
+      initialChance: req.body.payload.initialChance,
+      endChance: req.body.payload.endChance,
+      res: req.body.payload.res,
+    })
+      .then(res.status(200).send(snapshot.val() + " => " + model + " => " + weights))
+      .catch(err => res.status(500).send(err));
   }).catch(err => res.status(500).send(err));
-}
+})
 
 exports.updateweights = functions.region('europe-west1').https.onRequest(app);
 //   //  catch (error) {

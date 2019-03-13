@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
       console.log('New content is downloading.');
     },
     updated() {
-      console.log('New content was available SKIPPED WAITING, thus refreshed content.');
+      console.log('New content was available, SKIPPED WAITING -> refresh to update.');
     },
     offline() {
       console.log('No internet , no problem. App-a! is running in offline mode.');

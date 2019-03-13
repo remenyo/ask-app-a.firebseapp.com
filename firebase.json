@@ -17,10 +17,6 @@
     ],
     "rewrites": [
       {
-        "source": "/updateweights",
-        "function": "updateweights"
-      },
-      {
         "source": "**",
         "destination": "/index.html"
       }

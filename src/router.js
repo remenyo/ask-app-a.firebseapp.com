@@ -1,8 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Start from './views/Start.vue';
-import Doga from './views/Doga.vue';
-import About from './views/About.vue';
 
 Vue.use(Router);
 
@@ -13,18 +10,18 @@ export default new Router({
     {
       path: '/',
       name: 'start',
-      component: Start,
+      component: () => import(/* webpackChunkName: "Start" */ './views/Start.vue'),
     },
     {
       path: '/doga',
       name: 'doga',
-      component: Doga,
+      component: () => import(/* webpackChunkName: "Doga" */ './views/Doga.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      component: About,
+      component: () => import(/* webpackChunkName: "Doga" */ './views/About.vue'),
     },
-    { path: '*', redirect: '/' },
+    { path: '**', redirect: '/' },
   ],
 });

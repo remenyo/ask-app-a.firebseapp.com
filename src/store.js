@@ -28,32 +28,27 @@ export default new Vuex.Store({
   },
   actions: {
     firebaseUpdateContent({ commit }) {
-      const connectedRef = firebase.database().ref('.info/connected'); connectedRef.on('value', (snap) => {
-        if (snap.val() === true) {
-          firebase.database().ref().once('value', (snapshot) => {
-            commit('FIREBASE_UPDATE_CONTENT', snapshot.val());
-          });
-        }
+      firebase.database().ref().once('value', (snapshot) => {
+        commit('FIREBASE_UPDATE_CONTENT', snapshot.val());
       });
     },
     examHappened({ commit, state }, payload) {
       const filled = [];
-      for (const i of state.savedRes[payload.i].res) {
+      state.savedRes[payload.i].res.forEach((i) => {
         switch (i) {
           case null:
             filled.push([0, 0]);
             break;
           case 0:
-            if (payload.examHappened) { filled.push([1, 0]); break; } else { filled.push([0, -1]); break; }
+            if (payload.examHappened) { filled.push([1, 0]); break; } else { filled.push([-1, 0]); break; }
           default:
-            if (payload.examHappened) { filled.push([-1, 0]); break; } else { filled.push([0, 1]); break; }
+            if (payload.examHappened) { filled.push([0, -1]); break; } else { filled.push([0, 1]); break; }
         }
-      }
+      });
       const send = payload.data;
       send.res = filled;
       send.examHappened = payload.examHappened;
-      console.log(send);
-      axios.post('https://ask-app-a.firebaseapp.com/updateweights', {
+      axios.post('https://europe-west1-ask-app-a.cloudfunctions.net/updateweights', {
         payload: send,
       })
         .then((response) => { console.log(response); commit('DEL_SAVED', payload); })

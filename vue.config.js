@@ -1,6 +1,12 @@
 module.exports = {
   productionSourceMap: false,
-
+  configureWebpack: {
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
+    },
+  },
   css: {
     extract: false,
   },
@@ -13,7 +19,6 @@ module.exports = {
     workboxOptions: {
       clientsClaim: 'true',
       skipWaiting: 'true',
-      offlineGoogleAnalytics: 'true',
     },
   },
 
